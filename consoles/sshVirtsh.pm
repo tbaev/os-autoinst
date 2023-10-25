@@ -555,6 +555,8 @@ __END"
 
     $ret = $self->run_cmd("virsh $remote_vmm start " . $self->name . ' 2> >(tee /tmp/os-autoinst-' . $self->name . '-stderr.log >&2)');
     bmwqemu::diag("Dump actually used libvirt configuration file " . ($ret ? "(broken)" : "(working)"));
+    bmwqemu::diag("Dump actually used libvirt configuration file " . ($ret ? "(broken)" : "(working)"));
+    bmwqemu::diag("Dump actually used libvirt configuration file " . ($ret ? "(broken)" : "(working)"));
     my $config = $self->get_cmd_output("virsh $remote_vmm dumpxml " . $self->name);
     die "virsh start failed: $ret\n\nvirsh domain XML:\n$config" if $ret;
     my $config_domain = Mojo::DOM->new($config)->at('domain');
