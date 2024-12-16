@@ -251,6 +251,17 @@ sub add_vnc ($self, $args) {
     $elem->setAttribute(address => '0.0.0.0');
     $graphics->appendChild($elem);
 
+    # Video element for display settings
+    my $video = $doc->createElement('video');
+    $video->setAttribute(type => 'vmvga');  # Using 'vmvga' for VMware
+    $video->setAttribute(vram => '8388608');  # VRAM in bytes (8 MB in this example)
+    $video->setAttribute(heads => '1');
+    $video->setAttribute(primary => 'yes');
+    $video->appendChild($doc->createElement('resolution')->setAttributes(x => '1920', y => '1080'));
+    $video->appendChild($doc->createElement('autodetect')->setAttribute(false => ''));
+
+    $devices->appendChild($video);
+
     return;
 }
 
